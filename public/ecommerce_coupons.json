@@ -1,0 +1,212 @@
+[
+  {
+      "_id": "c1d2e3f4g5h6",
+      "brand_name": "Daraz Bangladesh",
+      "rating": 4.6,
+      "description": "One-stop shop for all your needs.",
+      "brand_logo": "https://example.com/daraz_logo.png",
+      "shop_Link": "https://www.daraz.com.bd",
+      "category": "E-commerce",
+      "isSaleOn": true,
+      "coupons": [
+          {
+              "coupon_code": "DARAZ10",
+              "description": "10% off on electronics",
+              "expiry_date": "2024-12-15",
+              "condition": "Maximum discount BDT 500",
+              "coupon_type": "Discount"
+          },
+          {
+              "coupon_code": "FREESHIP",
+              "description": "Free shipping on orders above BDT 2000",
+              "expiry_date": "2024-11-30",
+              "condition": "Valid for selected items only",
+              "coupon_type": "Shipping"
+          }
+      ]
+  },
+  {
+      "_id": "i7j8k9l0m1n2",
+      "brand_name": "Pickaboo",
+      "rating": 4.4,
+      "description": "Premium gadgets and home appliances.",
+      "brand_logo": "https://example.com/pickaboo_logo.png",
+      "shop_Link": "https://www.pickaboo.com",
+      "category": "Electronics",
+      "isSaleOn": true,
+      "coupons": [
+          {
+              "coupon_code": "PICKABOO15",
+              "description": "15% off on smartphones",
+              "expiry_date": "2024-12-25",
+              "condition": "Minimum purchase BDT 10000",
+              "coupon_type": "Discount"
+          }
+      ]
+  },
+  {
+      "_id": "o3p4q5r6s7t8",
+      "brand_name": "Chaldal",
+      "rating": 4.8,
+      "description": "Your favorite online grocery store.",
+      "brand_logo": "https://example.com/chaldal_logo.png",
+      "shop_Link": "https://www.chaldal.com",
+      "category": "Groceries",
+      "isSaleOn": false,
+      "coupons": [
+          {
+              "coupon_code": "GROCERY50",
+              "description": "50 BDT off on your first order",
+              "expiry_date": "2025-01-01",
+              "condition": "For new users only",
+              "coupon_type": "Discount"
+          }
+      ]
+  },
+  {
+      "_id": "u9v0w1x2y3z4",
+      "brand_name": "AjkerDeal",
+      "rating": 4.2,
+      "description": "Deals for everyday shopping.",
+      "brand_logo": "https://example.com/ajkerdeal_logo.png",
+      "shop_Link": "https://www.ajkerdeal.com",
+      "category": "Lifestyle",
+      "isSaleOn": true,
+      "coupons": [
+          {
+              "coupon_code": "DEAL20",
+              "description": "20% off on selected items",
+              "expiry_date": "2024-11-20",
+              "condition": "Excludes clearance products",
+              "coupon_type": "Discount"
+          }
+      ]
+  },
+  {
+      "_id": "a5b6c7d8e9f0",
+      "brand_name": "Foodpanda",
+      "rating": 4.7,
+      "description": "Order your favorite food online.",
+      "brand_logo": "https://example.com/foodpanda_logo.png",
+      "shop_Link": "https://www.foodpanda.com.bd",
+      "category": "Food Delivery",
+      "isSaleOn": true,
+      "coupons": [
+          {
+              "coupon_code": "FOODIE25",
+              "description": "25% off on orders over BDT 300",
+              "expiry_date": "2024-12-31",
+              "condition": "Valid on selected restaurants",
+              "coupon_type": "Discount"
+          },
+          {
+              "coupon_code": "PANDAFREE",
+              "description": "Free delivery on your first order",
+              "expiry_date": "2024-11-30",
+              "condition": "New users only",
+              "coupon_type": "Shipping"
+          }
+      ]
+  },
+  {
+      "_id": "g1h2i3j4k5l6",
+      "brand_name": "Rokomari",
+      "rating": 4.5,
+      "description": "Bangladesh's leading online bookstore.",
+      "brand_logo": "https://example.com/rokomari_logo.png",
+      "shop_Link": "https://www.rokomari.com",
+      "category": "Books",
+      "isSaleOn": true,
+      "coupons": [
+          {
+              "coupon_code": "BOOKS10",
+              "description": "10% off on all books",
+              "expiry_date": "2024-12-10",
+              "condition": "No minimum order required",
+              "coupon_type": "Discount"
+          }
+      ]
+  },
+  {
+      "_id": "m7n8o9p0q1r2",
+      "brand_name": "Bagdoom",
+      "rating": 4.3,
+      "description": "Trendy lifestyle products.",
+      "brand_logo": "https://example.com/bagdoom_logo.png",
+      "shop_Link": "https://www.bagdoom.com",
+      "category": "Fashion",
+      "isSaleOn": false,
+      "coupons": []
+  },
+  {
+      "_id": "s3t4u5v6w7x8",
+      "brand_name": "Shajgoj",
+      "rating": 4.6,
+      "description": "Beauty and personal care essentials.",
+      "brand_logo": "https://example.com/shajgoj_logo.png",
+      "shop_Link": "https://www.shajgoj.com",
+      "category": "Beauty",
+      "isSaleOn": false,
+      "coupons": []
+  },
+  {
+      "_id": "t8u9v0w1x2y3",
+      "brand_name": "Pathao",
+      "rating": 4.8,
+      "description": "Rides, food delivery, and more.",
+      "brand_logo": "https://example.com/pathao_logo.png",
+      "shop_Link": "https://www.pathao.com",
+      "category": "Transportation",
+      "isSaleOn": true,
+      "coupons": [
+          {
+              "coupon_code": "RIDEFREE",
+              "description": "First ride free up to BDT 50",
+              "expiry_date": "2024-12-31",
+              "condition": "For new users only",
+              "coupon_type": "Ride"
+          }
+      ]
+  },
+  {
+      "_id": "x3y4z5a6b7c8",
+      "brand_name": "Bikroy",
+      "rating": 4.4,
+      "description": "Buy and sell everything online.",
+      "brand_logo": "https://example.com/bikroy_logo.png",
+      "shop_Link": "https://www.bikroy.com",
+      "category": "Classifieds",
+      "isSaleOn": true,
+      "coupons": [
+          {
+              "coupon_code": "POSTAD",
+              "description": "Free ad posting on your first listing",
+              "expiry_date": "2024-12-31",
+              "condition": "For new sellers only",
+              "coupon_type": "Promotion"
+          }
+      ]
+  },
+  {
+      "_id": "y9z0a1b2c3d4",
+      "brand_name": "PriyoShop",
+      "rating": 4.2,
+      "description": "A trusted online marketplace.",
+      "brand_logo": "https://example.com/priyoshop_logo.png",
+      "shop_Link": "https://www.priyoshop.com",
+      "category": "General",
+      "isSaleOn": false,
+      "coupons": []
+  },
+  {
+      "_id": "e5f6g7h8i9j0",
+      "brand_name": "Techland BD",
+      "rating": 4.7,
+      "description": "Best deals on tech gadgets.",
+      "brand_logo": "https://example.com/techlandbd_logo.png",
+      "shop_Link": "https://www.techlandbd.com",
+      "category": "Technology",
+      "isSaleOn": false,
+      "coupons": []
+  }
+]
