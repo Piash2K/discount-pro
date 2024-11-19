@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const BrandDetails = () => {
@@ -18,18 +18,22 @@ const BrandDetails = () => {
                     <ul className="mt-2">
                         {brandData.coupons.map((coupon, index) => (
                             <li key={index} className="p-2 border rounded-md mb-2">
-                                <p>
-                                    <strong>Coupon Code:</strong> {coupon.coupon_code}
-                                </p>
-                                <p>
-                                    <strong>Description:</strong> {coupon.description}
-                                </p>
-                                <p>
-                                    <strong>Expiry Date:</strong> {coupon.expiry_date}
-                                </p>
-                                <p>
-                                    <strong>Condition:</strong> {coupon.condition}
-                                </p>
+                                <div className="flex justify-between">
+                                    <p>Coupon Code: {coupon.coupon_code}</p>
+                                    <div>
+                                        <CopyToClipboard
+                                            text={coupon.coupon_code}
+                                            onCopy={() => alert(`Copied: ${coupon.coupon_code}`)}>
+                                            <button className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+                                                Copy Code
+                                            </button>
+                                        </CopyToClipboard>
+                                        <a href={brandData.shop_Link} target="_blank" className="btn btn-primary" >Use Now</a>
+                                    </div>
+                                </div>
+                                <p>Description: {coupon.description}</p>
+                                <p>Expiry Date: {coupon.expiry_date}</p>
+                                <p>Condition: {coupon.condition}</p>
                             </li>
                         ))}
                     </ul>
