@@ -3,35 +3,36 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Register = () => {
-    const {createNewUser,setUser,updateUserProfile} = useContext(AuthContext)
+    const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate();
-    const handleRegister=e=>{
+    const handleRegister = e => {
         e.preventDefault();
-        const name= e.target.name.value;
+        const name = e.target.name.value;
         const email = e.target.email.value;
-        const photo =e.target.photo.value;
-        const password =e.target.password.value;
-        console.log(name,email,password,photo);
-        createNewUser(email,password)
-        .then(result=>{
-            // const user=result.user;
-            setUser(result.user);
-            // console.log(user);
-            updateUserProfile({
-                photoURL: photo,
-                displayName: name
+        const photo = e.target.photo.value;
+        const password = e.target.password.value;
+        console.log(name, email, password, photo);
+        createNewUser(email, password)
+            .then(result => {
+                setUser(result.user);
+                updateUserProfile({
+                    photoURL: photo,
+                    displayName: name
+                })
+                    .then(() => {
+                        setUser((prevUser) => {
+                            return { ...prevUser, displayName: name, photoURL: photo }
+                        });
+                        navigate('/');
+                    }).catch(error => {
+                        console.log(error)
+                    })
             })
-            .then (()=>{
-                navigate('/')
-            }).catch(error=>{
-                console.log(error)
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
             })
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode,errorMessage)
-        })
     }
     return (
         <div className="card bg-base-100 flex justify-center items-center">

@@ -8,22 +8,22 @@ const Profile = () => {
     return (
         <div className="min-h-screen bg-gray-100">
             <div className="bg-blue-600 text-white text-center py-12">
-                <h1 className="text-4xl font-bold">Welcome, {user?.displayName || 'User'}!</h1>
+                <h1 className="text-4xl font-bold">Welcome, {user?.displayName}!</h1>
                 <p className="mt-2 text-lg">Manage your profile and update your information</p>
             </div>
             <div className="flex justify-center items-center mt-8">
                 <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-sm text-center">
                     <div className="mb-4">
                         <img
-                            src={user?.photoURL || 'https://via.placeholder.com/150'}
+                            src={user?.photoURL}
                             alt="User Profile"
                             className="w-32 h-32 rounded-full mx-auto border-2 border-blue-600"
                         />
                     </div>
                     <h2 className="text-xl font-semibold text-gray-800">
-                        {user?.displayName || 'Name not available'}
+                        {user?.displayName}
                     </h2>
-                    <p className="text-gray-600">{user?.email || 'Email not available'}</p>
+                    <p className="text-gray-600">{user?.email}</p>
                     <div className="mt-6">
                         <Link to="/update-profile">
                             <button className="btn btn-primary">
