@@ -14,6 +14,8 @@ import AuthProvider from './provider/AuthProvider';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Profile from './components/Profile';
 import BrandDetails from './components/BrandDetails';
+import ForgetPassword from './components/ForgetPassword';
+import UpdateProfile from './components/UpdateProfile';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,10 @@ const router = createBrowserRouter([
         element: <PrivateRoute><Profile></Profile> </PrivateRoute>
       },
       {
+        path:'/update-profile',
+        element:<PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+      },
+      {
         path: '/dev',
         element: <h2>about</h2>
       },
@@ -62,7 +68,12 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/forget-password',
+        element: <ForgetPassword></ForgetPassword>
       }
+      
     ]
   },
 ]);

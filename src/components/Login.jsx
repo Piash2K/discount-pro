@@ -1,13 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider, sendPasswordResetEmail, signInWithPopup } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
 
 const Login = () => {
     const { signInWithEmail, googleProvider } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const [showPassword, setShowPassWord]=useState(false);
+
     const navigate = useNavigate(); // Hook for navigation
+    // const emailRef = useRef();
 
     const handleGoogleSignIn = () => {
         console.log(auth, googleProvider);
@@ -49,7 +52,6 @@ const Login = () => {
                 setError(errorMessage); // Set error message
             });
     };
-
     return (
         <div className="card bg-base-100 flex justify-center items-center">
             <form onSubmit={handleLogin} className="card-body">
@@ -58,15 +60,22 @@ const Login = () => {
                         <span className="label-text">Email</span>
                     </label>
                     <input name="email" type="email" placeholder="email" className="input input-bordered" required />
+                    {/* ref={emailRef}  */}
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input name="password" type="password" placeholder="password" className="input input-bordered" required />
-                    <label className="label">
+                    <input 
+                    name="password" 
+                    type={showPassword? 'text':'password'} 
+                    placeholder="password" 
+                    className="input input-bordered" required />
+                    <button onClick={()=>setShowPassWord(!showPassword)} className=' classname absolute mt-12 ml-48'>{showPassword? 'f':'e'}</button>
+                    <Link to='/forget-password'><label className="label">
                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                    </label>
+                    </label></Link>
+                    {/* onClick={handleForgetPassword}  */}
                 </div>
                 <div className="form-control mt-6">
                     <button className="btn btn-primary">Login</button>
