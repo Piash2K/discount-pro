@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import 'animate.css';
 
 const Brands = () => {
     const { user } = useContext(AuthContext);
@@ -23,7 +24,7 @@ const Brands = () => {
     return (
         <div className="min-h-screen bg-gray-100 p-6">
             {/* Page Title */}
-            <h1 className="text-4xl font-bold text-center mb-6">Our Partner Brands</h1>
+            <h1 className="text-4xl font-bold text-center mb-6 animate-bounce">Our Partner Brands</h1>
 
             {/* Search Bar */}
             <div className="flex justify-center mb-6">
@@ -45,9 +46,9 @@ const Brands = () => {
                     >
                         {/* Brand Logo */}
                         <img
-                            src={brand.logo || 'https://via.placeholder.com/100'}
+                            src={brand.brand_logo}
                             alt={`${brand.brand_name} Logo`}
-                            className="w-24 h-24 object-cover rounded-lg"
+                            className="w-24 h-24  rounded-lg"
                         />
 
                         {/* Brand Info */}

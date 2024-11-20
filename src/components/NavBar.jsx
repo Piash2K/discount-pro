@@ -5,7 +5,7 @@ import { AuthContext } from '../provider/AuthProvider';
 const NavBar = () => {
 
     return (
-        <div className='space-x-5'>
+        <div className='space-x-5 text-black'>
             <NavLink to='/'>Home</NavLink>
             <NavLink to='/brands'>Brands</NavLink>
             <NavLink to='/profile'>My-Profile</NavLink>
