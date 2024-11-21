@@ -10,19 +10,19 @@ const Header = () => {
         <div className="bg-gradient-to-r  from-[#8E44AD]  to-[#6A0DAD] py-6 shadow-lg">
             <div>
                 {user && user.displayName && (
-                    <div className="text-center text-3xl font-semibold text-white">
+                    <div className="text-center text-2xl lg:text-3xl font-semibold text-white">
                         Welcome, {user.displayName}!
                     </div>
                 )}
             </div>
-            <div className="flex justify-between items-center px-10 py-6">
+            <div className="flex flex-col lg:flex-row justify-between items-center px-10 py-6">
                 <h2 className="text-3xl font-bold text-white tracking-wide">
                     Discount<span className="text-[#F5B041]">PRO</span>
                 </h2>
                 <NavBar></NavBar>
                 <div className="space-x-6 flex items-center">
                     {user && user.email ? (
-                        <div className="flex items-center gap-4 text-white">
+                        <div className="flex flex-col lg:flex-row items-center gap-4 text-white">
                             <span className="text-lg">{user.email}</span>
                             <img
                                 className="w-12 h-12 rounded-full border-2 border-white shadow-md"

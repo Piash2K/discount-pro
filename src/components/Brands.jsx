@@ -39,11 +39,11 @@ const Brands = () => {
             </div>
 
             {/* Brands List */}
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-4 w-11/12 mx-auto">
                 {filteredBrands.map((brand) => (
                     <div
                         key={brand._id}
-                        className="bg-white shadow-md rounded-lg p-4 border grid grid-cols-3 items-center space-x-4"
+                        className="bg-white shadow-md rounded-lg p-4 border grid lg:grid-cols-3 items-center space-x-4"
                     >
                         {/* Brand Logo */}
                         <div className='flex flex-col'>
@@ -57,18 +57,18 @@ const Brands = () => {
                             <div>
                                 <h2 className="text-xl font-semibold">{brand.brand_name}</h2>
                                 <div className='my-2'>
-                            <h4 className='font-bold'>Rating:</h4>
-                            <div className='flex gap-4 items-center'>
-                                <ReactStars
-                                    count={5}
-                                    value={brand.rating}
-                                    size={24}
-                                    activeColor="#ffd700"
-                                    edit={false}
-                                />
-                                <p>{brand.rating}</p>
-                            </div>
-                        </div>
+                                    <h4 className='font-bold'>Rating:</h4>
+                                    <div className='flex gap-4 items-center'>
+                                        <ReactStars
+                                            count={5}
+                                            value={brand.rating}
+                                            size={24}
+                                            activeColor="#ffd700"
+                                            edit={false}
+                                        />
+                                        <p>{brand.rating}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -81,7 +81,7 @@ const Brands = () => {
                         </div>
 
                         {/* Buttons */}
-                        <div className="flex justify-end text-center">
+                        <div className="flex justify-end text-center mt-8">
 
                             <div className='flex flex-col'>
                                 <div

@@ -15,18 +15,14 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
-                // The signed-in user info.
                 const user = result.user;
                 navigate('/'); // Navigate to the home page
             })
             .catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                console.error("Google Sign-In Error:", errorCode, errorMessage);
+                console.error("Google Sign-In Error:", error.message);
                 setError(errorMessage); // Set error message
             });
     };
@@ -38,53 +34,70 @@ const Login = () => {
         setEmail(email); // Set the email value to state
         signInWithEmail(email, password)
             .then((result) => {
-                // Signed up 
                 const user = result.user;
                 navigate('/'); // Navigate to the home page
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                console.error("Login Error:", errorCode, errorMessage);
+                console.error("Login Error:", error.message);
                 setError(errorMessage); // Set error message
             });
     };
 
     return (
-        <div className='mx-auto w-2/6 mt-10 '>
-            <div className="card flex justify-center p-4 border border-gray-200 shadow-lg rounded-lg bg-white">
-                <h1 className='text-4xl text-center font-bold'>Login Now!</h1>
-                <form onSubmit={handleLogin} className="card-body">
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
+            <div className="w-full max-w-md p-6 bg-white border border-gray-200 shadow-lg rounded-lg">
+                <h1 className="text-2xl lg:text-4xl font-bold text-center mb-6">Login Now!</h1>
+                <form onSubmit={handleLogin} className="space-y-4">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text text-sm lg:text-base">Email</span>
                         </label>
-                        <input name="email" type="email" placeholder="email" className="input input-bordered" required />
+                        <input
+                            name="email"
+                            type="email"
+                            placeholder="Enter your email"
+                            className="input input-bordered w-full"
+                            required
+                        />
                     </div>
-                    <div className="form-control">
+                    <div className="form-control relative">
                         <label className="label">
-                            <span className="label-text"> Password</span>
+                            <span className="label-text text-sm lg:text-base">Password</span>
                         </label>
-                        <input 
-                            name="password" 
-                            type={showPassword ? 'text' : 'password'} 
-                            placeholder="password" 
-                            className="input input-bordered" required />
-                        <button onClick={() => setShowPassWord(!showPassword)} className='text-lg absolute mt-12 ml-96'>
+                        <input
+                            name="password"
+                            type={showPassword ? 'text' : 'password'}
+                            placeholder="Enter your password"
+                            className="input input-bordered w-full"
+                            required
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassWord(!showPassword)}
+                            className="absolute right-3 top-14 text-gray-500 text-lg"
+                        >
                             {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </button>
-                        <Link to='/forget-password' state={{ email }}><label className="label">
-                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                        </label></Link>
+                        <Link to="/forget-password" state={{ email }} className="label-text-alt text-sm text-right mt-2 block">
+                            Forgot password?
+                        </Link>
                     </div>
+                    {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Login</button>
+                        <button className="btn btn-primary w-full">Login</button>
                     </div>
-                    {/* Display error message */}
-                    {error && <p className="text-red-500 mt-2 ">{error}</p>}
                 </form>
-                <p className='mx-8'>New here? <Link to="/register"><span className='text-indigo-600'>Register now</span></Link></p>
-                <button onClick={handleGoogleSignIn} className="btn btn-neutral mt-4 mx-8">
+                <p className="mt-4 text-sm text-center">
+                    New here?{' '}
+                    <Link to="/register" className="text-indigo-600 font-medium">
+                        Register now
+                    </Link>
+                </p>
+                <button
+                    onClick={handleGoogleSignIn}
+                    className="btn btn-neutral mt-4 w-full"
+                >
                     Login with Google
                 </button>
             </div>

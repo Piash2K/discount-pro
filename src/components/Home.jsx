@@ -29,7 +29,7 @@ const Home = () => {
     return (
         <div className="bg-gray-50">
             {/* Carousel Section */}
-            <div className="w-8/ mx-auto my-10 animate__animated animate__fadeInDown">
+            <div className="w-full mx-auto my-10 animate__animated animate__fadeInDown">
                 <Carousel
                     infiniteLoop
                     useKeyboardArrows
@@ -115,49 +115,53 @@ const Home = () => {
             </div>
 
             {/* Brands on Sale Section */}
-            <div className="w-10/12 mx-auto">
-                <h2 className="text-center text-4xl my-8 font-bold">
+            <div className="lg:w-10/12 mx-auto">
+                <h2 className="text-center text-2xl lg:text-4xl my-6 lg:my-8 font-bold">
                     Brands on Sale
                 </h2>
-                <div className="grid grid-cols-3 gap-10 px-10">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mx-4 md:grid-cols-2 lg:gap-10 lg:px-10">
                     {brandsForSell.map((brand) => (
                         <div
                             key={brand._id}
-                            className="card bg-base-100 w-96 shadow-xl transition-transform duration-300 ease-in-out hover:scale-105"
+                            className="card bg-base-100 w-full shadow-xl transition-transform duration-300 ease-in-out hover:scale-105  mx-auto"
                         >
                             <figure>
                                 <img
                                     src={brand.brand_logo}
                                     alt={brand.brand_name}
-                                    className="h-[150px] object-contain p-4"
+                                    className="h-[120px] lg:h-[150px] object-contain p-4"
                                 />
                             </figure>
                             <div className="card-body">
-                                <h2 className="card-title">
+                                <h2 className="card-title text-sm lg:text-lg">
                                     {brand.brand_name}
                                 </h2>
                                 <div className="flex items-center gap-2 mb-2">
                                     <ReactStars
                                         count={5}
                                         value={brand.rating}
-                                        size={20}
+                                        size={16}
                                         activeColor="#ffd700"
                                         edit={false}
                                     />
-                                    <span>{brand.rating.toFixed(1)}</span>
+                                    <span className="text-sm">{brand.rating.toFixed(1)}</span>
                                 </div>
-                                <p className="text-gray-600">{brand.description}</p>
-                                <p className="font-medium text-gray-700">
+                                <p className="text-sm lg:text-base text-gray-600">
+                                    {brand.description}
+                                </p>
+                                <p className="text-sm lg:text-base font-medium text-gray-700">
                                     {brand.coupons.length} Coupons Available
                                 </p>
                                 <div className="card-actions justify-end mt-4">
-                                    <div className="badge badge-outline">{brand.category}</div>
+                                    <div className="badge badge-outline text-xs lg:text-sm">
+                                        {brand.category}
+                                    </div>
                                     {brand.isSaleOn ? (
-                                        <div className="badge badge-outline badge-success">
+                                        <div className="badge badge-outline badge-success text-xs lg:text-sm">
                                             On Sale
                                         </div>
                                     ) : (
-                                        <div className="badge badge-outline badge-gray">
+                                        <div className="badge badge-outline badge-gray text-xs lg:text-sm">
                                             No Sale
                                         </div>
                                     )}
@@ -167,12 +171,11 @@ const Home = () => {
                     ))}
                 </div>
             </div>
-
             <div className="w-10/12 mx-auto">
                 <h2 className="text-center text-4xl my-8 font-bold animate__animated animate__fadeInUp">
                     Popular Categories
                 </h2>
-                <div className="grid grid-cols-3 gap-10 px-10">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:px-10">
                     {popularBrands.map((brand) => (
                         <div
                             key={brand._id}

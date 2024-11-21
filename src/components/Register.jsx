@@ -58,80 +58,86 @@ const Register = () => {
                     });
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                console.error("Login Error:", errorCode, errorMessage);
+                console.error("Registration Error:", errorMessage);
                 setError(errorMessage);
             });
     };
 
     return (
-        <div className='mx-auto w-2/6 mt-10 '>
-            <div className="card flex justify-center p-4 border border-gray-200 shadow-lg rounded-lg bg-white">
-            <h2 className='text-4xl text-center font-bold'>Registration Now!</h2>
-                <form onSubmit={handleRegister} className="card-body">
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
+            <div className="w-full max-w-md bg-white border border-gray-200 shadow-lg rounded-lg p-6">
+                <h2 className="text-2xl lg:text-4xl font-bold text-center mb-6">Register Now!</h2>
+                <form onSubmit={handleRegister} className="space-y-4">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text text-sm lg:text-base">Name</span>
                         </label>
                         <input
                             name="name"
                             type="text"
-                            placeholder="name"
-                            className="input input-bordered"
+                            placeholder="Enter your name"
+                            className="input input-bordered w-full"
                             required
                         />
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text text-sm lg:text-base">Email</span>
                         </label>
                         <input
                             name="email"
                             type="email"
-                            placeholder="email"
-                            className="input input-bordered"
+                            placeholder="Enter your email"
+                            className="input input-bordered w-full"
                             required
                         />
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Photo URL</span>
+                            <span className="label-text text-sm lg:text-base">Photo URL</span>
                         </label>
                         <input
                             name="photo"
                             type="text"
-                            placeholder="photo url"
-                            className="input input-bordered"
+                            placeholder="Enter your photo URL"
+                            className="input input-bordered w-full"
                             required
                         />
                     </div>
-                    <div className="form-control">
+                    <div className="form-control relative">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text text-sm lg:text-base">Password</span>
                         </label>
                         <input
                             name="password"
                             type={showPassword ? 'text' : 'password'}
-                            placeholder="password"
-                            className="input input-bordered" required />
-                        <button onClick={() => setShowPassWord(!showPassword)} className='text-lg absolute mt-12 ml-96'>{showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}</button>
-                        {passwordError && (
-                            <p className="text-red-500 mt-2">{passwordError}</p>
-                        )}
+                            placeholder="Enter your password"
+                            className="input input-bordered w-full"
+                            required
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassWord(!showPassword)}
+                            className="absolute right-3 top-14 text-gray-500 text-lg"
+                        >
+                            {showPassword ? <FaEye /> : <FaEyeSlash />}
+                        </button>
+                        {passwordError && <p className="text-red-500 text-sm mt-2">{passwordError}</p>}
                     </div>
+                    {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Register</button>
+                        <button className="btn btn-primary w-full">Register</button>
                     </div>
-                    {error && <p className="text-red-500 mt-2 ">{error}</p>}
                 </form>
-                <p className='mx-8'>
-                    Already have an account? <Link to="/login"><span className='text-indigo-600'>Login</span></Link>
+                <p className="mt-4 text-sm text-center">
+                    Already have an account?{' '}
+                    <Link to="/login" className="text-indigo-600 font-medium">
+                        Login
+                    </Link>
                 </p>
             </div>
-
         </div>
-
     );
 };
 
