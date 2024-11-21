@@ -25,7 +25,7 @@ const Brands = () => {
     return (
         <div className="min-h-screen bg-gray-100 p-6">
             {/* Page Title */}
-            <h1 className="text-4xl font-bold text-center mb- ">Our Partner Brands</h1>
+            <h1 className="text-4xl font-bold text-center my-5 ">Our Partner Brands</h1>
 
             {/* Search Bar */}
             <div className="flex justify-center mb-6">
