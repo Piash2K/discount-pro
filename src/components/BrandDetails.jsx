@@ -1,68 +1,97 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import ReactStars from "react-stars";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BrandDetails = () => {
     const brandData = useLoaderData(); // Fetch brand data using loader
 
     return (
-        <div>
-            <div className="p-4">
-                <div className="flex flex-col items-center justify-center">
-                    <h2 className="text-3xl font-bold">{brandData.brand_name}</h2>
-                    <div>
-                        <img className="w-52" src={brandData.brand_logo} alt="" />
-                    </div>
-                    <div>
-                        <div className='flex gap-4 justify-center items-center'>
-                            <p className="text-lg mt-2">Rating:</p>
-                            <ReactStars
-                                count={5}
-                                value={brandData.rating}
-                                size={24}
-                                activeColor="#ffd700"
-                                edit={false}
-                            />
-                            <p>{brandData.rating}</p>
-                        </div>
-                    </div>
-
-                    <p className="mt-4">{brandData.description}</p>
+        <div className="p-8">
+            {/* Brand Header Section */}
+            <div className="p-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-lg shadow-md text-center">
+                <h2 className="text-4xl font-bold">{brandData.brand_name}</h2>
+                <div className="mt-4">
+                    <img
+                        className="w-52 h-32 mx-auto shadow-md"
+                        src={brandData.brand_logo}
+                        alt={brandData.brand_name}
+                    />
                 </div>
+                <div className="flex justify-center items-center gap-2 mt-4">
+                    <p className="text-lg">Rating:</p>
+                    <ReactStars
+                        count={5}
+                        value={brandData.rating}
+                        size={24}
+                        activeColor="#ffd700"
+                        edit={false}
+                    />
+                    <p>{brandData.rating}</p>
+                </div>
+                <p className="mt-4 text-lg">{brandData.description}</p>
             </div>
-            <div className="p-4">
-                <h3 className="text-2xl font-semibold">Coupons</h3>
+
+            {/* Coupons Section */}
+            <div className="mt-10">
+                <h3 className="text-3xl font-semibold text-gray-800 mb-6">
+                    Coupons
+                </h3>
                 {brandData.coupons.length > 0 ? (
-                    <ul className="mt-2 grid grid-cols-3 gap-10">
+                    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {brandData.coupons.map((coupon, index) => (
-                            <li key={index} className="p-2 border rounded-md mb-2 ">
-                                <div className="text-center">
-                                    <p>Coupon Code: {coupon.coupon_code}</p>
-                                    <p>Description: {coupon.description}</p>
-                                    <p>Expiry Date: {coupon.expiry_date}</p>
-                                    <p>Condition: {coupon.condition}</p>
+                            <li
+                                key={index}
+                                className="bg-[#FFFFFF] rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105"
+                            >
+                                <div className="p-6">
+                                    <h4 className="text-xl font-bold text-gray-800">
+                                        {coupon.coupon_code}
+                                    </h4>
+                                    <p className="text-gray-600 mt-2">
+                                        {coupon.description}
+                                    </p>
+                                    <p className="text-sm text-gray-500 mt-1">
+                                        Expiry: {coupon.expiry_date}
+                                    </p>
+                                    <p className="text-sm text-gray-500 mt-1">
+                                        Condition: {coupon.condition}
+                                    </p>
                                 </div>
-                                <div className="flex justify-center space-x-5">
+                                <div className="flex items-center justify-between bg-gray-100 px-4 py-2 border-t">
                                     <CopyToClipboard
                                         text={coupon.coupon_code}
-                                        onCopy={() => toast.success(`Copied: ${coupon.coupon_code}`)}>
-                                        <button className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+                                        onCopy={() =>
+                                            toast.success(
+                                                `Copied: ${coupon.coupon_code}`
+                                            )
+                                        }
+                                    >
+                                        <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
                                             Copy Code
                                         </button>
                                     </CopyToClipboard>
-                                    <a href={brandData.shop_Link} target="_blank" className="btn btn-primary" >Use Now</a>
+                                    <a
+                                        href={brandData.shop_Link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700"
+                                    >
+                                        Use Now
+                                    </a>
                                 </div>
                             </li>
                         ))}
                     </ul>
                 ) : (
-                    <p className="mt-2">No coupons available for this brand.</p>
+                    <p className="text-center text-gray-600 mt-4">
+                        No coupons available for this brand.
+                    </p>
                 )}
             </div>
-            <ToastContainer></ToastContainer>
+            <ToastContainer />
         </div>
     );
 };

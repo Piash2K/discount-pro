@@ -88,7 +88,7 @@ const Brands = () => {
                                     className={`${brand.isSaleOn ? "text-purple-500 animate-bounce" : "text-gray-400"
                                         } text-sm font-semibold`}
                                 >
-                                    {brand.isSaleOn ? "Sale On" : ""}
+                                    {brand.isSaleOn ? "Sale is on" : ""}
                                 </div>
                                 <button
                                     onClick={() => handleViewCoupons(brand._id)}
