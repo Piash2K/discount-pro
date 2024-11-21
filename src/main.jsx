@@ -17,6 +17,7 @@ import BrandDetails from './components/BrandDetails';
 import ForgetPassword from './components/ForgetPassword';
 import UpdateProfile from './components/UpdateProfile';
 import ErrorPage from './components/ErrorPage';
+import About from './components/About';
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dev',
-        element: <h2>about</h2>
+        element: <About></About>
       },
       {
         path: '/login',
