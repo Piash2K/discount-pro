@@ -7,7 +7,6 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState([]);
     const [loading, setLoading]= useState(true)
-    console.log(user,loading)
     const createNewUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
@@ -25,7 +24,6 @@ const AuthProvider = ({ children }) => {
         signOut(auth)
             .then(() => {
                 // Sign-out successful.
-                console.log("logOut")
             }).catch((error) => {
                 // An error happened.
             });

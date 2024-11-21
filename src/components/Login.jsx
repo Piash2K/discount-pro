@@ -13,7 +13,6 @@ const Login = () => {
     const navigate = useNavigate(); // Hook for navigation
 
     const handleGoogleSignIn = () => {
-        console.log(auth, googleProvider);
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -21,7 +20,6 @@ const Login = () => {
                 const token = credential.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                console.log("Google Sign-In Successful:", user);
                 navigate('/'); // Navigate to the home page
             })
             .catch((error) => {
@@ -38,12 +36,10 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         setEmail(email); // Set the email value to state
-        console.log(email, password);
         signInWithEmail(email, password)
             .then((result) => {
                 // Signed up 
                 const user = result.user;
-                console.log("Email Login Successful:", user);
                 navigate('/'); // Navigate to the home page
             })
             .catch((error) => {
