@@ -16,11 +16,13 @@ import Profile from './components/Profile';
 import BrandDetails from './components/BrandDetails';
 import ForgetPassword from './components/ForgetPassword';
 import UpdateProfile from './components/UpdateProfile';
+import ErrorPage from './components/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',

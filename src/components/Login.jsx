@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
     const { signInWithEmail, googleProvider } = useContext(AuthContext);
@@ -53,25 +54,26 @@ const Login = () => {
             });
     };
     return (
-        <div className="card bg-base-100 flex justify-center items-center">
+        <div className='mx-auto w-2/6 mt-10 '>
+            <div className="card flex justify-center p-4 border border-gray-200 shadow-lg rounded-lg bg-white">
+            <h1 className='text-4xl text-center font-bold'>Login Now!</h1>
             <form onSubmit={handleLogin} className="card-body">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
                     <input name="email" type="email" placeholder="email" className="input input-bordered" required />
-                    {/* ref={emailRef}  */}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Password</span>
+                        <span className="label-text"> Password</span>
                     </label>
                     <input 
                     name="password" 
                     type={showPassword? 'text':'password'} 
                     placeholder="password" 
                     className="input input-bordered" required />
-                    <button onClick={()=>setShowPassWord(!showPassword)} className=' classname absolute mt-12 ml-48'>{showPassword? 'f':'e'}</button>
+                    <button onClick={()=>setShowPassWord(!showPassword)} className='text-lg absolute mt-12 ml-96'>{showPassword? <FaEye></FaEye>:<FaEyeSlash></FaEyeSlash>}</button>
                     <Link to='/forget-password'><label className="label">
                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                     </label></Link>
@@ -81,12 +83,13 @@ const Login = () => {
                     <button className="btn btn-primary">Login</button>
                 </div>
                 {/* Display error message */}
-                {error && <p className="text-red-500 mt-2">{error}</p>}
+                {error && <p className="text-red-500 mt-2 ">{error}</p>}
             </form>
-            <p>New here? <Link to="/register">Register now</Link></p>
-            <button onClick={handleGoogleSignIn} className="btn btn-secondary mt-4">
+            <p className='mx-8'>New here? <Link to="/register"><span className='text-indigo-600'>Register now</span></Link></p>
+            <button onClick={handleGoogleSignIn} className="btn btn-neutral mt-4 mx-8">
                 Login with Google
             </button>
+        </div>
         </div>
     );
 };
