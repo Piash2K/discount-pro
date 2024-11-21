@@ -42,6 +42,8 @@ const Footer = () => {
                     </nav>
                 </div>
             </footer>
+            <hr />
+            <p className='text-sm text-center p-8 text-white'>© 2024, Discount Pro, All rights reserved.</p>
         </div>
     );
 };

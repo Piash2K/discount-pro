@@ -115,26 +115,84 @@ const Home = () => {
             </div>
 
             {/* Brands on Sale Section */}
-            <div>
-                <h2 className="text-center text-4xl my-8 font-bold animate__animated animate__fadeInRightBig">
+            <div className="w-10/12 mx-auto">
+                <h2 className="text-center text-4xl my-8 font-bold">
                     Brands on Sale
                 </h2>
-                <div className="grid grid-cols-3 gap-20 px-10">
+                <div className="grid grid-cols-3 gap-10 px-10">
                     {brandsForSell.map((brand) => (
                         <div
                             key={brand._id}
-                            className="p-4 border rounded-lg shadow-md flex flex-col items-start bg-white hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out animate__animated animate__fadeInUp"
+                            className="card bg-base-100 w-96 shadow-xl transition-transform duration-300 ease-in-out hover:scale-105"
                         >
-                            <div className="w-10/12 mx-auto">
+                            <figure>
                                 <img
                                     src={brand.brand_logo}
                                     alt={brand.brand_name}
-                                    className="w-full h-[150px] mb-4 rounded-md "
+                                    className="h-[150px] object-contain p-4"
+                                />
+                            </figure>
+                            <div className="card-body">
+                                <h2 className="card-title">
+                                    {brand.brand_name}
+                                </h2>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <ReactStars
+                                        count={5}
+                                        value={brand.rating}
+                                        size={20}
+                                        activeColor="#ffd700"
+                                        edit={false}
+                                    />
+                                    <span>{brand.rating.toFixed(1)}</span>
+                                </div>
+                                <p className="text-gray-600">{brand.description}</p>
+                                <p className="font-medium text-gray-700">
+                                    {brand.coupons.length} Coupons Available
+                                </p>
+                                <div className="card-actions justify-end mt-4">
+                                    <div className="badge badge-outline">{brand.category}</div>
+                                    {brand.isSaleOn ? (
+                                        <div className="badge badge-outline badge-success">
+                                            On Sale
+                                        </div>
+                                    ) : (
+                                        <div className="badge badge-outline badge-gray">
+                                            No Sale
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="w-10/12 mx-auto">
+                <h2 className="text-center text-4xl my-8 font-bold animate__animated animate__fadeInUp">
+                    Popular Categories
+                </h2>
+                <div className="grid grid-cols-3 gap-10 px-10">
+                    {popularBrands.map((brand) => (
+                        <div
+                            key={brand._id}
+                            className="relative p-6  border rounded-xl shadow-lg bg-gradient-to-br from-gray-50 to-gray-100 hover:shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out animate__animated animate__fadeInUp"
+                        >
+                            {/* Brand Image */}
+                            <div className="w-full h-[180px] overflow-hidden rounded-md">
+                                <img
+                                    src={brand.brand_logo}
+                                    alt={brand.brand_name}
+                                    className="object-contain w-full h-full"
                                 />
                             </div>
-                            <div className="ml-8">
-                                <h2 className="text-xl font-bold">{brand.brand_name}</h2>
-                                <div className="flex gap-4 items-center">
+
+                            {/* Brand Information */}
+                            <div className="mt-4">
+                                <h3 className="text-xl font-semibold text-gray-800">
+                                    {brand.brand_name}
+                                </h3>
+                                <div className="flex items-center gap-2 mt-2">
                                     <ReactStars
                                         count={5}
                                         value={brand.rating}
@@ -142,25 +200,28 @@ const Home = () => {
                                         activeColor="#ffd700"
                                         edit={false}
                                     />
-                                    <p>{brand.rating}</p>
-                                </div>
-                                <p className="text-gray-500 text-center mb-2">
-                                    {brand.description}
-                                </p>
-                                <p className="font-medium text-gray-600">
-                                    Coupons: {brand.coupons.length} Coupons Available
-                                </p>
-                                <div className="mt-2">
-                                    <span
-                                        className={`${brand.isSaleOn
-                                                ? "text-purple-500"
-                                                : "text-gray-400"
-                                            } text-sm font-semibold`}
-                                    >
-                                        {brand.isSaleOn ? "Sale On" : "No Sale"}
+                                    <span className="text-sm font-medium text-gray-600">
+                                        {brand.rating.toFixed(1)}
                                     </span>
                                 </div>
-                                <span className="px-4 py-1 mt-2 text-sm font-bold text-white bg-gray-800 rounded">
+                                <p className="mt-2 mb-6 text-sm text-gray-600 leading-relaxed">
+                                    {brand.description.length > 100
+                                        ? `${brand.description.substring(0, 100)}...`
+                                        : brand.description}
+                                </p>
+                            </div>
+
+                            {/* Status and Category */}
+                            <div className="absolute bottom-4 left-6">
+                                <span
+                                    className={`px-3 py-1 text-xs font-bold rounded-full ${brand.isSaleOn ? "bg-purple-500 text-white" : "bg-gray-300 text-gray-700"
+                                        }`}
+                                >
+                                    {brand.isSaleOn ? "On Sale" : "No Sale"}
+                                </span>
+                            </div>
+                            <div className="absolute bottom-4 right-6">
+                                <span className="px-4 py-1 text-xs font-semibold text-white bg-gray-800 rounded-full">
                                     {brand.category}
                                 </span>
                             </div>
@@ -169,58 +230,70 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                <h2 className="text-center text-4xl my-8 font-bold animate__animated animate__fadeInUp">
-                    Popular Categories
-                </h2>
-                <div className="grid grid-cols-3 gap-20 px-10">
-                    {popularBrands.map((brand) => (
-                        <div
-                            key={brand._id}
-                            className="p-4 border rounded-lg shadow-md flex flex-col items-start bg-white hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out animate__animated animate__fadeInUp"
-                        >
-                            <div className="w-10/12 mx-auto">
-                                <img
-                                    src={brand.brand_logo}
-                                    alt={brand.brand_name}
-                                    className="w-full h-[150px] mb-4 rounded-md "
-                                />
-                            </div>
-                            <div className="ml-8">
-                                <h2 className="text-xl font-bold">{brand.brand_name}</h2>
-                                <div className="flex gap-4 items-center">
-                                    <ReactStars
-                                        count={5}
-                                        value={brand.rating}
-                                        size={24}
-                                        activeColor="#ffd700"
-                                        edit={false}
-                                    />
-                                    <p>{brand.rating}</p>
-                                </div>
-                                <p className="text-gray-500 text-center mb-2">
-                                    {brand.description}
-                                </p>
-                                <p className="font-medium text-gray-600">
-                                    Coupons: {brand.coupons.length} Coupons Available
-                                </p>
-                                <div className="mt-2">
-                                    <span
-                                        className={`${brand.isSaleOn
-                                                ? "text-purple-500"
-                                                : "text-gray-400"
-                                            } text-sm font-semibold`}
-                                    >
-                                        {brand.isSaleOn ? "Sale On" : "No Sale"}
-                                    </span>
-                                </div>
-                                <span className="px-4 py-1 mt-2 text-sm font-bold text-white bg-gray-800 rounded">
-                                    {brand.category}
-                                </span>
+                <div className='flex justify-center bg-[#9538E2] mt-20'>
+                    <div className='text-center   py-5 w-9/12 lg:w-7/12'>
+                        <h1 className='text-5xl font-bold text-white '>Frequently Asked Questions.</h1>
+                    </div>
+                </div>
+                <div className='flex justify-center mt-8' >
+                    <div className='flex flex-col items-center gap-2  w-11/12'>
+                        <div className="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="my-accordion-3" defaultChecked />
+                            <div className="collapse-title text-xl font-medium">Q: How do I find coupons on your website?</div>
+                            <div className="collapse-content">
+                                <p>A: You can easily find coupons by browsing through categories or searching for specific brands or products using our search bar. We also feature popular and trending deals on the homepage for your convenience.</p>
                             </div>
                         </div>
-                    ))}
+                        <div className="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="my-accordion-3" />
+                            <div className="collapse-title text-xl font-medium">Q: Are the coupons updated regularly?</div>
+                            <div className="collapse-content">
+                                <p>A: Yes! We update our coupons daily to ensure you get access to the latest deals and discounts from top e-commerce platforms in Bangladesh.</p>
+                            </div>
+                        </div>
+                        <div className="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="my-accordion-3" />
+                            <div className="collapse-title text-xl font-medium">Q: How do I use a coupon I found on your website?</div>
+                            <div className="collapse-content">
+                                <p>A: Click on the coupon you want to use, and you’ll either see a code or be redirected to the store’s website where the discount is automatically applied. For codes, copy the code and paste it during checkout on the store's website.</p>
+                            </div>
+                        </div>
+                        <div className="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="my-accordion-3" />
+                            <div className="collapse-title text-xl font-medium">Q: Are these coupons free to use?</div>
+                            <div className="collapse-content">
+                                <p>A: Absolutely! All the coupons listed on our website are free to access and use. You don’t need to pay anything to grab a discount.</p>
+                            </div>
+                        </div>
+                        <div className="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="my-accordion-3" />
+                            <div className="collapse-title text-xl font-medium">Q: What types of discounts are available on your website?</div>
+                            <div className="collapse-content">
+                                <p>A: We offer various discounts such as percentage discounts (e.g., 20% off), cashback offers, free shipping deals, and buy-one-get-one (BOGO) offers from top Bangladeshi online stores like Daraz, Pickaboo, Foodpanda, and more.</p>
+                            </div>
+                        </div>
+                        <div className="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="my-accordion-3" />
+                            <div className="collapse-title text-xl font-medium">Q:  Do I need to create an account to use the coupons?</div>
+                            <div className="collapse-content">
+                                <p>A: No, you don’t need an account to browse or use coupons. However, creating an account allows you to save your favorite deals, get personalized recommendations, and receive updates on exclusive offers.</p>
+                            </div>
+                        </div>
+                        <div className="collapse collapse-plus bg-base-200">
+                            <input type="radio" name="my-accordion-3" />
+                            <div className="collapse-title text-xl font-medium">Q: Why is a coupon not working for me?</div>
+                            <div className="collapse-content">
+                                <p>A: Coupons may not work for several reasons:
+                                    <p>The coupon has expired.</p>
+                                    <p>The coupon is only valid for specific products or categories.</p>
+                                    <p> You might not meet the minimum purchase amount required.</p>
+                                    <p>Please read the terms and conditions provided with the coupon to ensure it applies to your purchase.</p></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     );
 };
